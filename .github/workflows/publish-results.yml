@@ -46,8 +46,16 @@ jobs:
           echo $GITHUB_WORKSPACE
           ls -R $GITHUB_WORKSPACE
 
+      - id: app_token
+        uses: actions/create-github-app-token@v2
+        if: always()
+        with:
+          app-id: 2291458
+          private-key: ${{ secrets.TEST_REPORTING_APP_TOKEN }}
+
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
         with:
           commit: ${{ inputs.commit }}
           event_file: ${{ inputs.event_file}}
@@ -55,3 +63,4 @@ jobs:
           files: "${{ github.workspace }}/artifacts/**/*.xml"
           action_fail: true
           action_fail_on_inconclusive: true
+          github_token: ${{ steps.app_token.outputs.token }}
