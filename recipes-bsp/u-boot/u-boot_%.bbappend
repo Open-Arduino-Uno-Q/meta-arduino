@@ -3,7 +3,7 @@
 DEPENDS:append:qcom = " skales-native xxd-native"
 
 SRC_URI = "git://github.com/arduino/u-boot.git;protocol=https;branch=qcom-mainline"
-SRCREV = "f36e65b75a8352d92333401fbfc4d0bf3bd2a962"
+SRCREV = "8008ca96a4dc53ddb3e51b96ea7e86d881ab7969"
 
 # Don't add extra dependencies for non-qcom machines and layers
 COMPILE_EXTRA_DEPENDS = ""
